@@ -1,0 +1,198 @@
+{
+  "environment": {
+    "numpy": "2.1.3"
+  },
+  "evaluation": {
+    "abstained": 0,
+    "accepted": 1000,
+    "accuracy_among_accepted_synthetic_examples": 1.0,
+    "confusion_matrix_including_abstentions": {
+      "dropout": {
+        "abstain": 0,
+        "dropout": 250,
+        "normal": 0,
+        "persistent_shift": 0,
+        "stuck": 0
+      },
+      "normal": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 250,
+        "persistent_shift": 0,
+        "stuck": 0
+      },
+      "persistent_shift": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 0,
+        "persistent_shift": 250,
+        "stuck": 0
+      },
+      "stuck": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 0,
+        "persistent_shift": 0,
+        "stuck": 250
+      }
+    },
+    "correct_fraction_of_all_examples": 1.0,
+    "coverage": 1.0,
+    "examples": 1000
+  },
+  "evaluation_interpretation": "The 1000/1000 result covers intentionally separable synthetic generators only. Harder natural-change controls include 14 rain-pulse traces classified as persistent_shift; these are not hardware diagnoses, all retain cause ambiguity. Small faults and unseen patterns may be missed.",
+  "feature_order": [
+    "absolute_median_residual",
+    "residual_mad",
+    "maximum_absolute_residual",
+    "persistent_fraction",
+    "flat_duration_fraction",
+    "detection_range",
+    "historical_range",
+    "observed_fraction",
+    "trailing_missing_fraction",
+    "median_absolute_detection_step",
+    "historical_noise",
+    "absolute_residual_trend"
+  ],
+  "id": "fieldfix-triage-synthetic-v1",
+  "limitations": [
+    "All training and evaluation labels describe self-generated patterns, not verified faults.",
+    "Synthetic held-out performance cannot estimate field performance, accuracy or warranty eligibility.",
+    "A genuine irrigation step and an additive sensor offset can yield identical readings; the model cannot separate their causes.",
+    "Flat readings can represent a stable environment or a stuck sensor; cause remains ambiguous.",
+    "Missing telemetry does not locate a gateway or hardware failure.",
+    "Only complete hourly 48+24 windows in VWC percentage points are supported; there is no live field validation.",
+    "Abstention checks are engineering guards around learned linear decision surfaces, not trained cause diagnosis."
+  ],
+  "model_sha256": "189ad21c862f6b037d30456e841a4204b880b6f5dcecfd852a509a39e6f9b946",
+  "negative_controls": {
+    "different_levels": {
+      "examples": 80,
+      "explicit_cause_ambiguity_count": 0,
+      "outcomes": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 80,
+        "persistent_shift": 0,
+        "stuck": 0
+      }
+    },
+    "high_noise": {
+      "examples": 80,
+      "explicit_cause_ambiguity_count": 0,
+      "outcomes": {
+        "abstain": 80,
+        "dropout": 0,
+        "normal": 0,
+        "persistent_shift": 0,
+        "stuck": 0
+      }
+    },
+    "physical_step_confounded": {
+      "examples": 80,
+      "explicit_cause_ambiguity_count": 80,
+      "outcomes": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 0,
+        "persistent_shift": 80,
+        "stuck": 0
+      }
+    },
+    "quantized_normal": {
+      "examples": 80,
+      "explicit_cause_ambiguity_count": 0,
+      "outcomes": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 80,
+        "persistent_shift": 0,
+        "stuck": 0
+      }
+    },
+    "unseen_rain_pulse": {
+      "examples": 80,
+      "explicit_cause_ambiguity_count": 14,
+      "outcomes": {
+        "abstain": 21,
+        "dropout": 0,
+        "normal": 45,
+        "persistent_shift": 14,
+        "stuck": 0
+      }
+    },
+    "unseen_slow_drydown": {
+      "examples": 80,
+      "explicit_cause_ambiguity_count": 0,
+      "outcomes": {
+        "abstain": 0,
+        "dropout": 0,
+        "normal": 80,
+        "persistent_shift": 0,
+        "stuck": 0
+      }
+    }
+  },
+  "parameters_sha256": "928a3c7befc9af9b42d9b3724ea04d3796e10e890e34c0b6d448767c92b5d08f",
+  "post_training_verification": {
+    "dedicated_tests_failed": 0,
+    "dedicated_tests_passed": 24,
+    "product_case_smoke": [
+      {
+        "case_id": "FF-101",
+        "patterns": [
+          "dropout",
+          "dropout",
+          "dropout"
+        ],
+        "status": "ready"
+      },
+      {
+        "case_id": "FF-102",
+        "patterns": [
+          "normal",
+          "persistent_shift",
+          "normal"
+        ],
+        "status": "ready"
+      },
+      {
+        "case_id": "FF-103",
+        "patterns": [
+          "normal",
+          "normal",
+          "normal"
+        ],
+        "status": "ready"
+      }
+    ],
+    "product_cases_first_evaluated_after_training": true,
+    "residual_signal_source_range_includes_history_and_evaluation": true,
+    "same_environment_retraining_same_file_sha256": true
+  },
+  "provenance": {
+    "cloud_api_used": false,
+    "numpy_used_only_for_offline_training": true,
+    "pickle_used": false,
+    "private_research_used": false,
+    "product_cases_used_in_training": false,
+    "runtime_inference_standard_library_only": true
+  },
+  "seeds": {
+    "negative_controls": 20261013,
+    "training": 20261011,
+    "validation": 20261012
+  },
+  "split": "Independently generated traces, disjoint RNG seeds; no product-case inputs; normalization and support bounds fit on training only.",
+  "training": {
+    "examples": 3200,
+    "examples_per_class": 800,
+    "final_cross_entropy": 0.01894374832549373,
+    "initial_cross_entropy": 1.3862943611198906,
+    "l2": 0.002,
+    "learning_rate": 0.08,
+    "optimizer": "full_batch_gradient_descent",
+    "steps": 1600
+  }
+}

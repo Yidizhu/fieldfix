@@ -1,0 +1,163 @@
+FieldFix triage pattern model v1
+================================
+This is a trained multiclass logistic regression, not a named scenario lookup.
+Offline full-batch gradient descent learns a 12-feature by 4-class weight matrix
+and four biases from 3,200 independently generated synthetic traces. Runtime
+computes those features, standardizes them using training-only statistics and
+applies the learned frozen weights and softmax. NumPy is training-only; runtime
+uses the Python standard library and a versioned JSON artifact, never pickle.
+
+Input: 72 timezone-aware, ordered hourly observations per device; first 48
+historical, last 24 evaluated; values 0–100 VWC percentage points or explicit
+missing slots. IDs only identify records. Names, gateway metadata, labels,
+scenario hints and UI case IDs are not classifier features. Input SHA-256 binds
+only device IDs and the supplied t/value observations. Model SHA-256 hashes the
+actual file bytes; parameters_sha256 covers feature order, class order,
+normalization and learned weights/bias. JSON has no timestamp so retraining with
+the same environment/seed produces a reproducible artifact.
+
+Normal, persistent_shift, stuck and dropout describe observation patterns.
+Scores are softmax model scores, not calibrated confidence, field accuracy or
+hardware-failure probabilities. A real irrigation step and sensor offset can be
+observationally identical; every persistent_shift output explicitly retains
+that ambiguity. A stable environment and stuck sensor are likewise inseparable
+without independent evidence. Topology is not used to identify any cause.
+
+Missing values are never imputed. Historical missingness or intermittent/short
+evaluation gaps abstain. A contiguous missing tail of at least 6 hourly slots
+can be classified by the learned dropout class; a conflicting predicted class
+is rejected. A stuck prediction without at least six hours of exactly flat
+readings, or a dropout prediction with no missing readings, is also rejected.
+Timing errors, invalid/nonfinite values, unsupported ranges and
+excessive historical noise reject input. Low model score/margin or feature
+values outside training support abstain. Constant or near-constant history is
+insufficient. These are explicit engineering guards, not learned fault causes.
+
+All splits use independent random seeds. Means, scales and feature support are
+fit on training only. The held-out set has 1,000 synthetic examples. Separate
+negative controls cover different levels, new drydown/rain-pulse shapes,
+quantization, high noise and physically confounded irrigation steps. See JSON
+for actual counts, coverage, accepted-example accuracy and abstentions, including
+unfavorable outcomes. Those counts are synthetic checks, not field performance.
+
+No private research, model checkpoint, cloud service, customer data, live sensor
+or product-case training input is used. No purchase or payment authority exists.
+The pre-existing research LSTM remains a separate historical inference artifact.
+
+Actual model SHA-256: 189ad21c862f6b037d30456e841a4204b880b6f5dcecfd852a509a39e6f9b946
+
+Held-out synthetic evaluation:
+{
+  "examples": 1000,
+  "accepted": 1000,
+  "abstained": 0,
+  "coverage": 1.0,
+  "correct_fraction_of_all_examples": 1.0,
+  "accuracy_among_accepted_synthetic_examples": 1.0,
+  "confusion_matrix_including_abstentions": {
+    "normal": {
+      "normal": 250,
+      "persistent_shift": 0,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "persistent_shift": {
+      "normal": 0,
+      "persistent_shift": 250,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "stuck": {
+      "normal": 0,
+      "persistent_shift": 0,
+      "stuck": 250,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "dropout": {
+      "normal": 0,
+      "persistent_shift": 0,
+      "stuck": 0,
+      "dropout": 250,
+      "abstain": 0
+    }
+  }
+}
+
+Negative controls:
+{
+  "different_levels": {
+    "examples": 80,
+    "outcomes": {
+      "normal": 80,
+      "persistent_shift": 0,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "explicit_cause_ambiguity_count": 0
+  },
+  "unseen_slow_drydown": {
+    "examples": 80,
+    "outcomes": {
+      "normal": 80,
+      "persistent_shift": 0,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "explicit_cause_ambiguity_count": 0
+  },
+  "unseen_rain_pulse": {
+    "examples": 80,
+    "outcomes": {
+      "normal": 45,
+      "persistent_shift": 14,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 21
+    },
+    "explicit_cause_ambiguity_count": 14
+  },
+  "high_noise": {
+    "examples": 80,
+    "outcomes": {
+      "normal": 0,
+      "persistent_shift": 0,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 80
+    },
+    "explicit_cause_ambiguity_count": 0
+  },
+  "quantized_normal": {
+    "examples": 80,
+    "outcomes": {
+      "normal": 80,
+      "persistent_shift": 0,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "explicit_cause_ambiguity_count": 0
+  },
+  "physical_step_confounded": {
+    "examples": 80,
+    "outcomes": {
+      "normal": 0,
+      "persistent_shift": 80,
+      "stuck": 0,
+      "dropout": 0,
+      "abstain": 0
+    },
+    "explicit_cause_ambiguity_count": 80
+  }
+}
+
+Final verification: 24 dedicated tests passed. Two complete training runs in the same environment produced the same model file SHA-256. Product cases were first evaluated after training: FF-101 dropout/dropout/dropout; FF-102 normal/persistent_shift/normal; FF-103 normal/normal/normal.
+
+Evidence provenance: median_residual_vwc source_range covers all 72 hours because its value depends on both history and evaluation. Other signal ranges cover their respective observations.
+
+Interpretation: 1000/1000 applies only to intentionally separable synthetic generators. The harder rain-pulse control has 14 shift classifications, all with explicit physical-cause ambiguity. Small faults and unseen patterns may be missed. No real field-performance claim is supported.

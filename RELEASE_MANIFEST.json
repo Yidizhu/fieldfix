@@ -1,0 +1,274 @@
+{
+  "excluded_categories": [
+    "credentials",
+    "runtime databases",
+    "personal reports",
+    "contacts",
+    "private research inputs and inference tools",
+    "transaction records",
+    "screenshots"
+  ],
+  "files": [
+    {
+      "bytes": 120,
+      "path": ".env.example",
+      "sha256": "e46993fdf80a1990001b0daaf0fae5c0ccf542d7260bf9c3d66bfda982ccd522"
+    },
+    {
+      "bytes": 284,
+      "path": ".gitignore",
+      "sha256": "029ecc6bb219cb755f220ebfa17f6f6b1b75f07cc3319efd4fe40cf7cdb455bc"
+    },
+    {
+      "bytes": 1078,
+      "path": "LICENSE",
+      "sha256": "b944899b6b66bc7256b757710adcd49f10537bd3c7005020c4bcea9cf99f38b4"
+    },
+    {
+      "bytes": 7984,
+      "path": "README.md",
+      "sha256": "7a2e392b184dc54e9978973d3f7632400be968881bfd02038945f3fff46c58a3"
+    },
+    {
+      "bytes": 1929,
+      "path": "SECURITY.md",
+      "sha256": "9b8a4288ebee936b3dce633c9e9d93b8ce4becd3dc0af74bd4a2bb541814e8e7"
+    },
+    {
+      "bytes": 1180,
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "388839810ce33bb8cd90403901d129fc3ee4c761a8b12bcff0a70d49df3ba68e"
+    },
+    {
+      "bytes": 13663,
+      "path": "app/analysis_engine.py",
+      "sha256": "e7822a1a2ad46c717fbc2e386f910af2f25eb136838ca22ce96b8c2b5b397e81"
+    },
+    {
+      "bytes": 6438,
+      "path": "app/case_ai.py",
+      "sha256": "40e5ea7063a394d60254977749e9e07acf5bfdf997e32f7741733a48ca048be4"
+    },
+    {
+      "bytes": 27509,
+      "path": "app/case_report.py",
+      "sha256": "5fd376d89f75d48c2f2bc9527a62536e8d0d4d4342d54c9d3e3680abb7f8241b"
+    },
+    {
+      "bytes": 656,
+      "path": "app/demo_session.py",
+      "sha256": "d5833e099bb7df78e7dcda157227b574174cc5c1b3444e0fbc391da5e74065c2"
+    },
+    {
+      "bytes": 67187,
+      "path": "app/locale_extra.py",
+      "sha256": "5e855c0d522287df410b62cb4f9f4539ac22675d071392fb08f528d9ccf3fc1f"
+    },
+    {
+      "bytes": 27820,
+      "path": "app/localization.py",
+      "sha256": "11154baf3291cb6221e7401a2ff5c791419f500cb9a82cc755a272eca42009c4"
+    },
+    {
+      "bytes": 4026,
+      "path": "app/models/triage-model-v1.json",
+      "sha256": "189ad21c862f6b037d30456e841a4204b880b6f5dcecfd852a509a39e6f9b946"
+    },
+    {
+      "bytes": 14975,
+      "path": "app/paypal.py",
+      "sha256": "70a593a60b0564f7fc5a43ea0012952aca7221dcedaa38fdc2519036d11f935b"
+    },
+    {
+      "bytes": 11052,
+      "path": "app/recovery.py",
+      "sha256": "a2433fca800a833ab7e1bd779af12b2334d3cc486030ef3cce1b92a7cf369716"
+    },
+    {
+      "bytes": 5498,
+      "path": "app/research_replay.py",
+      "sha256": "6624f2171a3063c94a35291a50979316a2cdbf8a50f79294b8999cd5f863af5e"
+    },
+    {
+      "bytes": 8265,
+      "path": "app/server.py",
+      "sha256": "b208d63e612f1854c3cedbd963ccc1df2dbdca5edc25f08c8935d330a9330b52"
+    },
+    {
+      "bytes": 36362,
+      "path": "app/static/app.js",
+      "sha256": "b1500231ee5783f82a4219fbe3c923c48a19c72dc3d88a6adfdf90771abd7994"
+    },
+    {
+      "bytes": 1608,
+      "path": "app/static/flow-view.js",
+      "sha256": "8f456f9bd1a8b95ad45a5d8dbd593258daf90352ee684be4f39dbe90dabe46b0"
+    },
+    {
+      "bytes": 98647,
+      "path": "app/static/i18n.js",
+      "sha256": "9fc1b5e40dd28d8bb324cfc1c1d20af0d9752bc97c63760c5d7f85b4c458e4ff"
+    },
+    {
+      "bytes": 5830,
+      "path": "app/static/index.html",
+      "sha256": "4605e0efc7a3ef4a0b7171bdd880cece6ee1bc4d9d22828933653d40231cb9a3"
+    },
+    {
+      "bytes": 6117,
+      "path": "app/static/research.css",
+      "sha256": "8a0a81ea45c3d18512177c12a6a09325920282b92fac35d1b1b6741a9c113736"
+    },
+    {
+      "bytes": 30117,
+      "path": "app/static/research.js",
+      "sha256": "6e0748f2888771a479ffcb38a18047d3f694a05c60cca384b7a269e83c9ab54c"
+    },
+    {
+      "bytes": 18435,
+      "path": "app/static/styles.css",
+      "sha256": "99d05db93d53d7b81d0d530db61c99d3f5234499b153a4ced54aed5300bafc93"
+    },
+    {
+      "bytes": 15938,
+      "path": "app/tests/test_ai_http.py",
+      "sha256": "fc746e80bcb2a864a4caad7aea9e4215fa3eed38095c42f4a25b609073a90ee9"
+    },
+    {
+      "bytes": 15502,
+      "path": "app/tests/test_ai_workflow.py",
+      "sha256": "d218a4f771266b4c2076d435555e892f5e561c265f905f47f897cd8047ff0c4a"
+    },
+    {
+      "bytes": 5452,
+      "path": "app/tests/test_analysis.py",
+      "sha256": "7843ecde23cb7c339d1e1ffc8db56fabe22637115e47b88d58cf9427cb0688eb"
+    },
+    {
+      "bytes": 9211,
+      "path": "app/tests/test_authorization.py",
+      "sha256": "f9de2355696cdfb5e95fac30ffd084aa1dba89e1e39edac93e737d98413ece85"
+    },
+    {
+      "bytes": 3837,
+      "path": "app/tests/test_case_ai.py",
+      "sha256": "319c45bef2566a70fcf672ba5b7c577d2957b51f1abdc7cfedb58898fe72f952"
+    },
+    {
+      "bytes": 8330,
+      "path": "app/tests/test_case_report.py",
+      "sha256": "8e7e7cdf64f321d39723917f3a31fd9c2a54fe7bedb6829b51853fd35f62b882"
+    },
+    {
+      "bytes": 3353,
+      "path": "app/tests/test_demo_http.py",
+      "sha256": "c22710eeff5b78e4002aa56a9892050d16cc0f760446a8a94c8f79cd1200c8ed"
+    },
+    {
+      "bytes": 4112,
+      "path": "app/tests/test_demo_session.py",
+      "sha256": "f2e1f1e95d49af43775e4667ba3c95ba57ea698c339d95638eed8414ebc8250f"
+    },
+    {
+      "bytes": 7367,
+      "path": "app/tests/test_evidence_history.py",
+      "sha256": "71faf2d305d3852c852b483a152426bb43e9f97b7cfa79be38a45e7cf960038d"
+    },
+    {
+      "bytes": 1562,
+      "path": "app/tests/test_flow_view.cjs",
+      "sha256": "624447415e157b04dd5f7e24120ee199cdd96f9a8604f642d6f955b55fa3486a"
+    },
+    {
+      "bytes": 9799,
+      "path": "app/tests/test_i18n.cjs",
+      "sha256": "1abdc667bd1ac70b915da68ddcbc971d55e7f4aeccb993a89b0c376d67ca4948"
+    },
+    {
+      "bytes": 7012,
+      "path": "app/tests/test_legacy_payment_verification.py",
+      "sha256": "01a92b9608b090abe67aca21fccc614c24622a9765868b19649af72e4d131d66"
+    },
+    {
+      "bytes": 14114,
+      "path": "app/tests/test_localization.py",
+      "sha256": "6bc097c490d89dd93297a2d5d880c4b0814c6869bd37c02168cabe129a40db65"
+    },
+    {
+      "bytes": 10967,
+      "path": "app/tests/test_multilingual.py",
+      "sha256": "dccb043beb9dd8c8452dce4e639dccdd92a00d44fbbe4d6e14b7c0150dcc84d2"
+    },
+    {
+      "bytes": 6969,
+      "path": "app/tests/test_payment_review.py",
+      "sha256": "e338b84c38cb598ad4765a91770f9b3e83df727918e59f9b835cf5919b0f0c71"
+    },
+    {
+      "bytes": 9602,
+      "path": "app/tests/test_recovery.py",
+      "sha256": "b5ecb872f2a910995144b4042a3312c528c716f26714d46c0095d60a86688d97"
+    },
+    {
+      "bytes": 10211,
+      "path": "app/tests/test_triage_model.py",
+      "sha256": "0fa4fc43d5ac153fe39098c0f6ad4e438631cff8bacbdc0d64d6c7dcd3519ef1"
+    },
+    {
+      "bytes": 13080,
+      "path": "app/tests/test_workflow.py",
+      "sha256": "47749fa1957057d7363fc191786e7ad3147387abb1d6cf419b357e9158bc9d6d"
+    },
+    {
+      "bytes": 14638,
+      "path": "app/train_triage_model.py",
+      "sha256": "00545d6948a725d9e7521112463180a8efef55a20ce73aac14dee8902b17909b"
+    },
+    {
+      "bytes": 13736,
+      "path": "app/triage_model.py",
+      "sha256": "f334f9a498d30482adcd752022aba775f18a8f9d937d6b09f61c34c7ff289dfe"
+    },
+    {
+      "bytes": 19491,
+      "path": "app/workflow.py",
+      "sha256": "a5ecbbd60a39ea3120b69d0638052743e163021f91d31915c05de1af782ff22e"
+    },
+    {
+      "bytes": 5875,
+      "path": "docs/triage-model-card-v1.json",
+      "sha256": "6ef67a439beb02ebe32aa0d3d59625221f21c9dfafafa28b38df644c8684f64c"
+    },
+    {
+      "bytes": 6163,
+      "path": "docs/triage-model-card-v1.txt",
+      "sha256": "064bf281eaaaa327fa6585a0dcaeb67dd916a6bfd80948b445d1e57bef948b8d"
+    },
+    {
+      "bytes": 289,
+      "path": "start-demo.cmd",
+      "sha256": "0fdcca86d8e53fc894bb630bdd9b62a550f4d5c6ce8130393263c8afd52c3e96"
+    },
+    {
+      "bytes": 409,
+      "path": "start-sandbox.cmd",
+      "sha256": "f194574d6edc4e28d11f2190779f53dfb02a094c375abab5bf35c67feef159d6"
+    },
+    {
+      "bytes": 11799,
+      "path": "tools/build_public_release.py",
+      "sha256": "8598dd15e3058f4cbc444246edc22a3eaac0d6570edb9a5962fc507752c1d4b7"
+    }
+  ],
+  "missing_optional_multilingual_files": [],
+  "package": "FieldFix-v0.10-source",
+  "publication_status": "local preparation only; not uploaded or submitted",
+  "scan": {
+    "findings": 0,
+    "scope": "allowlisted UTF-8 files; best effort, human review still needed",
+    "status": "passed"
+  },
+  "schema": "fieldfix-public-source-v1",
+  "selection": "explicit file allowlist",
+  "version": "0.10"
+}

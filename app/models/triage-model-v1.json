@@ -1,0 +1,179 @@
+{
+  "abstention": {
+    "minimum_margin": 0.15,
+    "minimum_score": 0.6
+  },
+  "algorithm": "multinomial_logistic_regression",
+  "bias": [
+    -0.035484902311,
+    -0.075044551329,
+    -0.08129195347,
+    0.19182140711
+  ],
+  "classes": [
+    "normal",
+    "persistent_shift",
+    "stuck",
+    "dropout"
+  ],
+  "feature_order": [
+    "absolute_median_residual",
+    "residual_mad",
+    "maximum_absolute_residual",
+    "persistent_fraction",
+    "flat_duration_fraction",
+    "detection_range",
+    "historical_range",
+    "observed_fraction",
+    "trailing_missing_fraction",
+    "median_absolute_detection_step",
+    "historical_noise",
+    "absolute_residual_trend"
+  ],
+  "id": "fieldfix-triage-synthetic-v1",
+  "input_contract": {
+    "cadence_seconds": 3600,
+    "evaluation_points": 24,
+    "history_points": 48,
+    "points": 72,
+    "value_range": [
+      0,
+      100
+    ],
+    "value_unit": "VWC percentage points"
+  },
+  "negative_control_seed": 20261013,
+  "normalization": {
+    "lower": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mean": [
+      2.835729535323,
+      0.386644098074,
+      3.703099038882,
+      0.301549479167,
+      0.200570652174,
+      3.819588886184,
+      3.57864023967,
+      0.841432291667,
+      0.158567708333,
+      0.253887914498,
+      0.293304537871,
+      1.086666079925
+    ],
+    "scale": [
+      4.124113423128,
+      0.405831930099,
+      4.113588849541,
+      0.399939621289,
+      0.352898684525,
+      3.812996995949,
+      1.303513358521,
+      0.298558002459,
+      0.298558002459,
+      0.204909038371,
+      0.133847765501,
+      2.17963732501
+    ],
+    "upper": [
+      18.08057848381,
+      3.173851135308,
+      19.532110076386,
+      1.25,
+      1.25,
+      23.775699758728,
+      8.250176368636,
+      1.25,
+      1.25,
+      1.37663085844,
+      0.98977330438,
+      17.24199251652
+    ]
+  },
+  "parameters_sha256": "928a3c7befc9af9b42d9b3724ea04d3796e10e890e34c0b6d448767c92b5d08f",
+  "purpose": "Classify learned temporal patterns; cannot identify physical hardware causes or authorize payments.",
+  "split": "Independently generated traces, disjoint RNG seeds; no product-case inputs; normalization and support bounds fit on training only.",
+  "training": {
+    "examples": 3200,
+    "examples_per_class": 800,
+    "final_cross_entropy": 0.01894374832549373,
+    "initial_cross_entropy": 1.3862943611198906,
+    "l2": 0.002,
+    "learning_rate": 0.08,
+    "optimizer": "full_batch_gradient_descent",
+    "steps": 1600
+  },
+  "training_data": "synthetic",
+  "training_seed": 20261011,
+  "validation_seed": 20261012,
+  "version": 1,
+  "weights": [
+    [
+      -0.472106877016,
+      -0.302619288757,
+      -0.528103231858,
+      -0.877455207106,
+      -0.968137984363,
+      -0.00355656062,
+      -0.016843209938,
+      1.342656262424,
+      -1.342656262424,
+      0.529257946794,
+      0.046572846857,
+      -0.226691564666
+    ],
+    [
+      0.955652567173,
+      -0.209970945914,
+      0.914038490832,
+      1.27966598296,
+      -0.294637864367,
+      0.509107637298,
+      -0.029654956027,
+      0.149664302107,
+      -0.149664302107,
+      0.214079931789,
+      -0.017610480937,
+      0.198726540003
+    ],
+    [
+      -0.143405077419,
+      0.815529553089,
+      0.026471032628,
+      -0.002163382032,
+      1.65322069376,
+      -0.29739799868,
+      -0.017816624535,
+      0.210758617228,
+      -0.210758617228,
+      -1.078618895885,
+      0.04715232253,
+      0.279449882845
+    ],
+    [
+      -0.340140612738,
+      -0.302939318418,
+      -0.412406291602,
+      -0.400047393822,
+      -0.390444845029,
+      -0.208153077999,
+      0.0643147905,
+      -1.703079181759,
+      1.703079181759,
+      0.335281017302,
+      -0.076114688449,
+      -0.251484858182
+    ]
+  ]
+}

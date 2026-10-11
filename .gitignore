@@ -1,0 +1,23 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Runtime, private inputs and generated development output
+app/runtime/
+work/
+releases/
+docs/screenshots/
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.DS_Store
+Thumbs.db
