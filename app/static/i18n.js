@@ -2,6 +2,22 @@
 // Each key is a complete message; parameter substitution never changes domain data.
 window.FieldFixI18n = (() => {
   const rows = [
+    ["progress_review", "待复核", "Needs review"],
+    ["progress_normal", "正常观察", "Routine monitoring"],
+    ["progress_quote", "待确认报价", "Quote approval needed"],
+    ["progress_authorize", "待买家授权", "Buyer approval needed"],
+    ["progress_recovery", "待检查恢复", "Recovery review needed"],
+    ["progress_charge", "已验收，待结算", "Accepted; awaiting charge"],
+    ["progress_completed", "已结算", "Settled"],
+    ["progress_voided", "授权已撤销", "Authorization voided"],
+    ["progress_pending", "交易待核对", "Transaction check needed"],
+    ["progress_payment_check", "付款状态待核对", "Payment status to check"],
+    ["progress_legacy", "历史交易待核对", "Historical payment to check"],
+    ["progress_warranty", "保修草稿", "Warranty draft"],
+    ["progress_reviewed", "已复核", "Reviewed"],
+    ["service_roles", "示例：农场客户向监测服务商支付替换服务费；先授权，验收后再确认扣款。", "Example: the farm customer pays the monitoring provider for replacement service. Authorize first; confirm the charge after acceptance."],
+    ["acceptance_role", "由服务商记录恢复验收；此演示不代表客户独立签收。", "The provider records recovery acceptance; this demo is not an independent customer sign-off."],
+
     ["demo_environment", "演示环境", "Demo environment"],
     ["demo_notes", "演示说明", "Demo setup notes"],
     ["analysis_sources", "分析来源与方法", "Analysis sources and method"],
@@ -293,6 +309,22 @@ window.FieldFixI18n = (() => {
   ];
   // Complete daily-workflow translations; internal research retains its own English fallback.
   const extraRows = [
+    ["progress_review", "Pendiente de revisión", "À examiner", "A rever"],
+    ["progress_normal", "Seguimiento habitual", "Suivi habituel", "Monitorização habitual"],
+    ["progress_quote", "Presupuesto por aprobar", "Devis à approuver", "Orçamento por aprovar"],
+    ["progress_authorize", "Pendiente del comprador", "Accord du client requis", "A aguardar o comprador"],
+    ["progress_recovery", "Recuperación por revisar", "Rétablissement à vérifier", "Recuperação por rever"],
+    ["progress_charge", "Aceptado; cobro pendiente", "Accepté ; débit en attente", "Aceite; cobrança pendente"],
+    ["progress_completed", "Liquidado", "Réglé", "Liquidado"],
+    ["progress_voided", "Autorización anulada", "Autorisation annulée", "Autorização anulada"],
+    ["progress_pending", "Transacción por verificar", "Transaction à vérifier", "Transação por verificar"],
+    ["progress_payment_check", "Estado del pago por verificar", "État du paiement à vérifier", "Estado do pagamento por verificar"],
+    ["progress_legacy", "Pago anterior por verificar", "Ancien paiement à vérifier", "Pagamento anterior por verificar"],
+    ["progress_warranty", "Borrador de garantía", "Brouillon de garantie", "Rascunho de garantia"],
+    ["progress_reviewed", "Revisado", "Examiné", "Revisto"],
+    ["service_roles", "Ejemplo: el cliente agrícola paga al proveedor de monitoreo por la sustitución. Primero autoriza; el cobro se confirma después de la aceptación.", "Exemple : le client agricole paie le prestataire de suivi pour le remplacement. Autorisation préalable ; débit confirmé après acceptation.", "Exemplo: o cliente agrícola paga ao prestador de monitorização pela substituição. Autoriza primeiro; a cobrança é confirmada após a aceitação."],
+    ["acceptance_role", "El proveedor registra la aceptación de la recuperación; esta demostración no representa una aprobación independiente del cliente.", "Le prestataire consigne l’acceptation du rétablissement ; cette démonstration ne constitue pas une validation indépendante du client.", "O prestador regista a aceitação da recuperação; esta demonstração não representa uma aprovação independente do cliente."],
+
     ["demo_environment", "Entorno de demostración", "Environnement de démonstration", "Ambiente de demonstração"],
     ["demo_notes", "Notas de la demostración", "Notes de démonstration", "Notas da demonstração"],
     ["analysis_sources", "Fuentes y método del análisis", "Sources et méthode d’analyse", "Fontes e método da análise"],

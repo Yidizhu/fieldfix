@@ -133,6 +133,9 @@ function render() {
   window.FieldFixResearch.render($("research-content"),researchData,locale,inferenceData);
 }
 function label(category){return ["shared_connection","reading_anomaly","normal","insufficient_data"].includes(category)?t(category):category;}
+function progressLabel(c) {
+  return t("progress_"+window.FieldFixFlowView.progress(c.workflow,{needsReview:needsAiReview(c),normal:c.analysis.category==="normal"}));
+}
 function renderQueue() {
   const list=$("case-list");list.replaceChildren();const filter=$("filter").value;
   const cases=appData.cases.filter(c=>filter==="all"||(filter==="normal"?c.analysis.category==="normal":needsCaseReview(c)));
@@ -140,7 +143,7 @@ function renderQueue() {
   for(const c of cases){
     const b=button("","case-button"+(selected===c.id?" selected":""),()=>{captureDraft();selected=c.id;render();});
     b.setAttribute("aria-pressed",String(selected===c.id));
-    add(b,add(el("div","case-top"),el("span","",c.id),el("span","pill "+c.analysis.severity,label(c.analysis.category))),el("strong","",c.title),el("small","",c.site));list.append(b);
+    add(b,add(el("div","case-top"),el("span","",c.id),el("span","pill",progressLabel(c))),el("strong","",c.title),el("small","",c.site));list.append(b);
   }
   if(!cases.length)list.append(el("div","empty",t("empty_filter")));
 }
@@ -192,7 +195,7 @@ function renderDetail() {
   const aiNeedsReview=needsAiReview(c);
   const focus=window.FieldFixFlowView.focus(aiNeedsReview?{...w,review:null,approved:false,quote:null}:w);
   viewSignature=JSON.stringify([focus.stages,pendingAction,w.payment?.status,w.recovery?.status,w.repair,!!w.approved,!!w.review]);
-  detail.append(add(el("div","detail-head"),add(el("div"),el("span","pill "+a.severity,label(a.category)),el("h2","",c.title),el("p","",c.site)),button(t("case_report"),"secondary",()=>downloadReport(c),false,"download-report")));
+  detail.append(add(el("div","detail-head"),add(el("div"),el("span","pill",progressLabel(c)),el("h2","",c.title),el("p","",c.site)),button(t("case_report"),"secondary",()=>downloadReport(c),false,"download-report")));
   const body=el("div","case-body"),evidence=el("div","evidence-pane"),actions=el("aside","action-pane");
   const category=["shared_connection","reading_anomaly","normal","insufficient_data"].includes(a.category)?a.category:"insufficient_data";
   const overview=el("section","case-overview");overview.id="case-overview";
@@ -241,6 +244,7 @@ function renderDetail() {
   if(w.review?.decision==="warranty")purchase.append(el("p","",t("warranty_help")));
   else if(w.review?.decision==="replace"){
     const amount=money(w.quote?.amount||"25.00",w.quote?.currency||"NZD");
+    purchase.append(el("p","",t("service_roles")));
     purchase.append(add(el("div","product"),el("span","price",amount),el("strong","",w.quote?.sku||"FF-Soil-01"),el("small","",t("demo_catalog"))));
     if(w.approved)purchase.append(el("p","approved-note",t(w.repair==="verified_demo"?"procurement_followup":"procurement_approved")));
     else {const approval=check(t("approve_confirm",{amount}),"purchase-confirm");add(purchase,approval.wrap,button(t("approve"),"primary",()=>act("approve",{confirmed:approval.input.checked}),!!pending||legacy||aiNeedsReview,"approve-procurement"));}
@@ -324,6 +328,7 @@ function renderDetail() {
   }
   const nonCharge=w.review&&!["replace","warranty"].includes(w.review.decision);
   if(!legacy&&nonCharge)recovery.append(el("p","",t("noncharge_followup")));
+  recovery.append(el("p","",t("acceptance_role")));
   const canVerify=!legacy&&!pending&&r?.status==="pass"&&(nonCharge||pay?.status==="authorized");
   if(w.repair==="verified_demo")recovery.append(el("p","approved-note",t("followup_done")));
   else if(canVerify){

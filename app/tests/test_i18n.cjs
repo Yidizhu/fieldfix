@@ -34,7 +34,7 @@ function boot({languages=["en"], language="en", saved, failStorage=false}={}) {
 }
 
 test("all five packs have every message exactly once", () => {
-  assert.equal(baseRows.length, 287);
+  assert.equal(baseRows.length, 302);
   assert.equal(extraRows.length, baseRows.length);
   assert.equal(new Set(baseRows.map(r=>r[0])).size, baseRows.length);
   assert.equal(new Set(extraRows.map(r=>r[0])).size, extraRows.length);
@@ -46,12 +46,12 @@ test("all five packs have every message exactly once", () => {
 });
 
 test("all original 286 Chinese and English messages remain unchanged", () => {
-  const originals = baseRows.filter(row => row[0] !== "research_language_fallback");
+  const originals = baseRows.filter(row => row[0] !== "research_language_fallback" && !row[0].startsWith("progress_") && !["service_roles","acceptance_role"].includes(row[0]));
   const sha = crypto.createHash("sha256").update(JSON.stringify(originals), "utf8").digest("hex");
   assert.equal(sha, "85a05b2f748a3ea816a24d8ec3303299f425e8301721a82980553b559fcd6f31");
 });
 
-test("all 1435 localized messages preserve exact placeholder names and multiplicity", () => {
+test("all localized messages preserve exact placeholder names and multiplicity", () => {
   for(const [key, template] of Object.entries(packs.en)) {
     for(const locale of locales) {
       const translated=packs[locale][key];

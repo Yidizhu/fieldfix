@@ -25,9 +25,9 @@
       "sha256": "b944899b6b66bc7256b757710adcd49f10537bd3c7005020c4bcea9cf99f38b4"
     },
     {
-      "bytes": 7984,
+      "bytes": 8294,
       "path": "README.md",
-      "sha256": "7a2e392b184dc54e9978973d3f7632400be968881bfd02038945f3fff46c58a3"
+      "sha256": "6370c923344a58146dd5ee7184f8c6b5a6d4d9f0d2076449db345394d90dec64"
     },
     {
       "bytes": 1929,
@@ -95,19 +95,19 @@
       "sha256": "b208d63e612f1854c3cedbd963ccc1df2dbdca5edc25f08c8935d330a9330b52"
     },
     {
-      "bytes": 36362,
+      "bytes": 36596,
       "path": "app/static/app.js",
-      "sha256": "b1500231ee5783f82a4219fbe3c923c48a19c72dc3d88a6adfdf90771abd7994"
+      "sha256": "416d90da0b67655fab8d31a3c838a12048291c03905d4f9c365fd68e34c1cb81"
     },
     {
-      "bytes": 1608,
+      "bytes": 2042,
       "path": "app/static/flow-view.js",
-      "sha256": "8f456f9bd1a8b95ad45a5d8dbd593258daf90352ee684be4f39dbe90dabe46b0"
+      "sha256": "f87e25f4549272f1facbba336cdb083432bbc2d141824ddee6b1a2aa1b27776a"
     },
     {
-      "bytes": 98647,
+      "bytes": 102248,
       "path": "app/static/i18n.js",
-      "sha256": "9fc1b5e40dd28d8bb324cfc1c1d20af0d9752bc97c63760c5d7f85b4c458e4ff"
+      "sha256": "27e3df3b81d22af9c31ca208a729c4e35fd991a960597a0221c68a8901cc5953"
     },
     {
       "bytes": 5830,
@@ -175,14 +175,14 @@
       "sha256": "71faf2d305d3852c852b483a152426bb43e9f97b7cfa79be38a45e7cf960038d"
     },
     {
-      "bytes": 1562,
+      "bytes": 2310,
       "path": "app/tests/test_flow_view.cjs",
-      "sha256": "624447415e157b04dd5f7e24120ee199cdd96f9a8604f642d6f955b55fa3486a"
+      "sha256": "ad797379c3cf2bbd0cb609c6d6346b511495892b4d9e50af7590ad3e095d0b53"
     },
     {
-      "bytes": 9799,
+      "bytes": 9886,
       "path": "app/tests/test_i18n.cjs",
-      "sha256": "1abdc667bd1ac70b915da68ddcbc971d55e7f4aeccb993a89b0c376d67ca4948"
+      "sha256": "4d835e9de346d193a9b064645ad9969ed60e8e51b54fae787c19442ab8d171a6"
     },
     {
       "bytes": 7012,
@@ -235,6 +235,11 @@
       "sha256": "a5ecbbd60a39ea3120b69d0638052743e163021f91d31915c05de1af782ff22e"
     },
     {
+      "bytes": 4805,
+      "path": "docs/JUDGE_QUICK_START.txt",
+      "sha256": "b4e48c0e4aaf2dd3bbddd7025c87859994c3fbb0e37665ad0d1d8c9c78233583"
+    },
+    {
       "bytes": 5875,
       "path": "docs/triage-model-card-v1.json",
       "sha256": "6ef67a439beb02ebe32aa0d3d59625221f21c9dfafafa28b38df644c8684f64c"
@@ -255,13 +260,13 @@
       "sha256": "f194574d6edc4e28d11f2190779f53dfb02a094c375abab5bf35c67feef159d6"
     },
     {
-      "bytes": 11799,
+      "bytes": 12092,
       "path": "tools/build_public_release.py",
-      "sha256": "8598dd15e3058f4cbc444246edc22a3eaac0d6570edb9a5962fc507752c1d4b7"
+      "sha256": "fde9ce2dfa66de7fa60aaaeacee82f431883c059870425aff0041a8e2e462012"
     }
   ],
   "missing_optional_multilingual_files": [],
-  "package": "FieldFix-v0.10-source",
+  "package": "FieldFix-v0.11-source",
   "publication_status": "local preparation only; not uploaded or submitted",
   "scan": {
     "findings": 0,
@@ -270,5 +275,5 @@
   },
   "schema": "fieldfix-public-source-v1",
   "selection": "explicit file allowlist",
-  "version": "0.10"
+  "version": "0.11"
 }

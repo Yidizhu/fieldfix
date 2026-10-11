@@ -20,7 +20,14 @@
     }
     return {stages:[4],reason:state.repair==="verified_demo"?"reviewed":"recovery"};
   }
-  const api=Object.freeze({focus});
+  function progress(state, {needsReview=false, normal=false}={}) {
+    const effective=needsReview&&!state.payment?{...state,review:null,approved:false}:state;
+    const reason=focus(effective).reason;
+    if(reason==="review"&&normal&&!needsReview)return "normal";
+    if(reason==="payment")return state.payment?.status==="awaiting_buyer"?"authorize":"payment_check";
+    return reason;
+  }
+  const api=Object.freeze({focus,progress});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   else root.FieldFixFlowView=api;
 })(typeof window!=="undefined"?window:globalThis);

@@ -4,6 +4,10 @@ FieldFix helps monitoring service providers turn scattered sensor anomalies into
 
 This is a local hackathon prototype. It includes a working trained pattern classifier, human review, repair acceptance gates, an auditable case report, and a PayPal **Sandbox-only** authorization/capture adapter. All bundled sensor readings and repair checks are synthetic. No real hardware diagnosis, completed field repair, customer validation, or production readiness is claimed.
 
+## Reviewer quick start
+
+See `docs/JUDGE_QUICK_START.txt` for the short review route, payment roles, both testing modes and troubleshooting. The case badges track workflow progress; original sensor evidence remains unchanged.
+
 ## Try the application
 
 Install Python 3.10 or later. The application uses only the Python standard library: no package installation, cloud AI account, payment account, or credentials are needed for the local demonstration.
@@ -85,4 +89,4 @@ This repository is intended for a single operator on localhost. It has no produc
 
 ## License
 
-Original FieldFix source, synthetic fixtures and bundled learned weights are provided under the MIT license in `LICENSE`. See `THIRD_PARTY_NOTICES.md` for optional tools and service names. This package is prepared for publication; its existence does not mean it has been uploaded, submitted to a competition, or independently accepted by PayPal.
+Original FieldFix source, synthetic fixtures and bundled learned weights are provided under the MIT license in `LICENSE`. See `THIRD_PARTY_NOTICES.md` for optional tools and service names. The public source is available at https://github.com/Yidizhu/fieldfix. Publication is separate from competition submission or acceptance by PayPal.

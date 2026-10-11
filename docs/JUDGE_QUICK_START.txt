@@ -1,0 +1,40 @@
+FieldFix — reviewer quick start (v0.11)
+=======================================
+Who it is for
+A monitoring service provider reviewing agricultural sensor alerts. In the paid example, the farm customer pays the provider for an approved replacement service. The NZD 25 price is fictional. The provider records recovery acceptance; independent customer acceptance and separate user roles are not implemented.
+
+Option A — explore without accounts (about five minutes)
+1. Install Python 3.10+ and download/clone the public repository.
+2. Run: python app/server.py --port 8767 --offline-demo
+3. Open http://127.0.0.1:8767/ and select English in the header if needed.
+4. Select FF-102. Inspect the AI evidence. Choose out-of-warranty replacement, enter a simulated inspection note, and confirm the review.
+5. Approve the displayed NZD 25 quote. Choose Simulate buyer authorization.
+6. Choose Insufficient data under recovery and check it: acceptance and charging remain blocked.
+7. Choose Recovered and check it; enter a simulated acceptance note and confirm acceptance. This still does not charge.
+8. Confirm the charge separately. The case badge becomes Settled. Download the report.
+9. Switch between English, Chinese, Spanish, French and Portuguese. Amounts and original notes do not change.
+All payment actions in this path are local simulations. The server does not load PayPal credentials or call PayPal. Restarting creates an isolated fresh demo. Keep the terminal running.
+
+Option B — exercise the PayPal integration
+1. Follow README > Use PayPal Sandbox. Create your own Sandbox REST application in the official PayPal Developer dashboard and copy .env.example to .env locally.
+2. Configure your Sandbox client ID and secret. Never put these in a public repository. Create/use a Sandbox Personal buyer distinct from the merchant business account.
+3. Run: python app/server.py --port 8766 --db app/runtime/sandbox.sqlite
+4. Review and approve a fresh FF-102 quote, create the authorization order and follow its PayPal Sandbox approval link. Log in with the Sandbox Personal buyer credentials, not your real PayPal account.
+5. Return to FieldFix and verify authorization. Inspect amount/currency and Authorized; not charged. No capture is allowed without recovery checks and recorded human acceptance.
+6. Repeat the insufficient/recovered samples and explicit acceptance, then separately confirm capture. The application verifies the provider response on the server.
+7. To test cancellation instead, create a separate fresh isolated database and void an uncharged authorization before capture. A void is not a refund. Do not reuse an already captured case for this branch.
+No special private project access is required; the application is localhost-only. The developer dashboard/account setup requires an internet connection and PayPal's own verification. If credentials are absent, the integration is unavailable: that is not a successful payment. The offline path remains available. Do not expose this unauthenticated prototype to the internet.
+
+Troubleshooting
+- Page cannot open: keep the server running and use its exact localhost port.
+- Address already in use: choose another local port and open that port.
+- Sandbox buyer login fails: obtain/reset the test user's password in Developer > Sandbox Accounts; a real PayPal login is different. The account owner must complete security verification.
+- An uncertain transaction response: reconcile/check the existing order; do not blindly create another order.
+- An authorization expires or its allowed capture window closes: do not infer success or force capture. The prototype has no automatic reauthorization.
+- The normal control FF-103 should not be forced into a purchase.
+
+Evidence and limits
+The current payment adapter was separately tested in Sandbox on 11 October 2026 with virtual NZD 25 authorization and capture after simulated recovery acceptance. This is historical test evidence, not a guarantee of the reviewer's new transaction. All bundled observations, quotes and recovery samples are synthetic. The local model recognizes patterns, not established hardware causes. There is no real dispatch, field repair certification, production authentication, warranty adjudication or refund integration.
+
+Updates during the hackathon
+The FieldFix case application, synthetic classifier integration, evidence-linked reviews, recovery gates, Sandbox authorization/capture workflow, five-language interface and reports were developed during the hackathon. A separate earlier academic sensor project inspired the problem; its private LSTM, collaborators' models and research datasets are not included in this application. v0.11 adds progress-based case badges and clarifies payment/acceptance roles.

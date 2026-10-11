@@ -14,9 +14,9 @@ from pathlib import Path
 import re
 import zipfile
 
-VERSION = "0.10"
+VERSION = "0.11"
 PACKAGE = f"FieldFix-v{VERSION}-source"
-ZIP_TIME = (2026, 10, 11, 0, 0, 0)
+ZIP_TIME = (2026, 10, 12, 0, 0, 0)
 MANIFEST = "RELEASE_MANIFEST.json"
 
 # Explicit names are intentional. Never replace these with a recursive glob of
@@ -59,6 +59,7 @@ REQUIRED = (
     "app/tests/test_recovery.py",
     "app/tests/test_triage_model.py",
     "app/tests/test_workflow.py",
+    "docs/JUDGE_QUICK_START.txt",
     "docs/triage-model-card-v1.json",
     "docs/triage-model-card-v1.txt",
     "tools/build_public_release.py",
